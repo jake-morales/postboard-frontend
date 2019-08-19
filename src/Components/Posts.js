@@ -3,6 +3,8 @@ import axios from 'axios';
 import Post from './Post';
 import {Grid} from '@material-ui/core'
 
+import {backendURL} from '../index'
+
 export default function Posts() {
 
     const [posts, setPosts] = useState([]);
@@ -10,7 +12,7 @@ export default function Posts() {
     useEffect(() => {
         async function fetchData(){
             const response = await axios(
-                'https://postboard-backend.herokuapp.com/api/posts/',
+                `http://${backendURL}/api/posts/`,
             );
             setPosts(response.data);
         }
@@ -21,21 +23,37 @@ export default function Posts() {
         <Grid
             container
             spacing={3}
-            alignItems="center"
+            alignItems="flex-start"
             justify="flex-start"
-            direction="column"
+            direction="row"
             >
-            {posts ?            
+            {          
                 posts.map(post => {
                     return (
-                        <Grid item xs={12} >
-                            <Post key={post} post={post} />
+                        <Grid item key={post._id} md={3} >
+                            <Post post={post} />
                         </Grid>
                     )
                 })
-             : (
-                <Grid item>Loading Posts...</Grid>
-            )}
+             }
+             {          
+                posts.map(post => {
+                    return (
+                        <Grid item key={post._id} md={3} >
+                            <Post post={post} />
+                        </Grid>
+                    )
+                })
+             }
+             {          
+                posts.map(post => {
+                    return (
+                        <Grid item key={post._id} md={3} >
+                            <Post post={post} />
+                        </Grid>
+                    )
+                })
+             }
         </Grid>
 
     )
