@@ -94,6 +94,7 @@ export default function PrimarySearchAppBar(props) {
   function handleSearchKeyUp(event) {
     if(event.which === 13){
       props.changeSearchTerm(event.target.value)
+      props.changeSection(0)
     }
   }
 

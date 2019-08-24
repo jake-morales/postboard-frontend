@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Themeprovider from './App/Themeprovider';
 import * as serviceWorker from './serviceWorker';
 
-export const backendURL = process.env.NODE_ENV === 'development' ? 'localhost:5000' : 'postboard-backend.herokuapp.com'
+export const backendURL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://postboard-backend.herokuapp.com'
 
 ReactDOM.render(<Themeprovider />, document.getElementById('root'));
 

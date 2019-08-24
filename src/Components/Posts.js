@@ -18,7 +18,7 @@ export default function Posts(props) {
     useEffect(() => {
         async function fetchData(){
             const response = await axios(
-                `http://${backendURL}/api/posts/search?q=${props.query}`,
+                `${backendURL}/api/posts/search?q=${props.query}`,
             );
             setPosts(response.data);
         }
