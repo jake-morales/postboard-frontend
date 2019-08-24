@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
+  
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -91,11 +92,17 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
+  // can refactor these two functions - duplicate code
   function handleSearchKeyUp(event) {
     if(event.which === 13){
       props.changeSearchTerm(event.target.value)
       props.changeSection(0)
     }
+  }
+  
+  function handleTitleClick(){
+    props.changeSearchTerm('');
+    props.changeSection(0)
   }
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -135,7 +142,7 @@ export default function PrimarySearchAppBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-            <Typography className={classes.title} variant="h6" onClick={()=>props.changeSection(0)}>
+            <Typography className={classes.title} variant="h6" onClick={handleTitleClick}>
                 PostBoard
             </Typography>
            <div className={classes.search}>
