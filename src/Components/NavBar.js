@@ -87,9 +87,14 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(null);
   }
 
-
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
+  }
+
+  function handleSearchKeyUp(event) {
+    if(event.which === 13){
+      props.changeSearchTerm(event.target.value)
+    }
   }
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -143,6 +148,7 @@ export default function PrimarySearchAppBar(props) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onKeyUp={handleSearchKeyUp}
             />
           </div>
           <div className={classes.grow} />
