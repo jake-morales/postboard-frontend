@@ -12,6 +12,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Button } from '@material-ui/core';
+import CodeIcon from '@material-ui/icons/Code'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
     '&:hover':{
       cursor: 'pointer',
-    }
+    },
   },
   search: {
     position: 'relative',
@@ -118,7 +120,7 @@ export default function PrimarySearchAppBar(props) {
     >
       <MenuItem onClick={()=>props.changeSection(1)}>
         <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -134,6 +136,14 @@ export default function PrimarySearchAppBar(props) {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
+      </MenuItem>
+      <MenuItem onClick={()=>props.changeSection(3)}>
+      <IconButton color="inherit">
+          <Badge color="secondary">
+            <CodeIcon />
+          </Badge>
+        </IconButton>
+        <p>About</p>
       </MenuItem>
     </Menu>
   );
@@ -161,8 +171,8 @@ export default function PrimarySearchAppBar(props) {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit" onClick={()=>props.changeSection(1)}>
-              <Badge badgeContent={4} color="secondary">
+            <IconButton color="inherit" onClick={()=>props.changeSection(1)}>
+              <Badge color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -175,6 +185,11 @@ export default function PrimarySearchAppBar(props) {
             >
               <AccountCircle />
             </IconButton>
+          </div>
+          <div className={classes.sectionDesktop}>
+            <Button color='inherit' size='small' onClick={()=>props.changeSection(3)}>
+              About
+            </Button>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

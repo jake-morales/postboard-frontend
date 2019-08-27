@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from '../Components/NavBar';
 import Posts from '../Components/Posts'
+import About from '../Components/About'
 
 export default function App () {
     const [section, setSection] = useState(0);
@@ -11,6 +12,7 @@ export default function App () {
             case 0: return <Posts query={searchTerm}/>;
             case 1: return <h1>Messages ... Coming soon!</h1>;
             case 2: return <h1>Account SignIn ... Coming soon!</h1>;
+            case 3: return <About />
             default: return <></>;
         }
     }
